@@ -12,16 +12,19 @@
 - [x] Check in initial solution structure
 
 ## Project Structure
-- [ ] Set up the base clean architecture
-- [ ] Add the UI project with Aspire/ Orchestration
-- [ ] Add the presentation project with FastEndPoints
-- [ ] Add the application project with services
-- [ ] Add the infrastructure project with PostgreSQL
-- [ ] Add the domain project with business logic
+- [x] Set up the base clean architecture
+- [x] Add the UI project with Aspire/ Orchestration
+- [x] Add the presentation project with FastEndPoints
+- [x] Add the application project with services
+- [x] Add the infrastructure project with PostgreSQL
+- [x] Add the domain project with business logic
 
 ## Domain
-- [ ] Add result pattern
-- [ ] Add problem details pattern
+- [x] Add result pattern
+- [x] Add problem details pattern
+- [x] Product entity
+- [x] Product repository contract
+- [x] Problem detail extensions
 
 ## Infrastructure
 - [ ] Add dependency injection file
