@@ -26,6 +26,16 @@ jobs:
       run: |
         dotnet workload install aspire
 
+    - name: Debug - List files
+      run: |
+        echo "Current working directory:"
+        pwd
+        echo "GitHub workspace: ${{ github.workspace }}"
+        echo "Files in current directory:"
+        ls -la
+        echo "Looking for .sln files:"
+        find . -name "*.sln" -type f
+
     - name: Restore dependencies
       run: |
         dotnet restore ProductWarehouse.sln
