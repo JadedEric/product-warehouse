@@ -2,11 +2,22 @@ name: PR Pipeline
 
 on:
     pull_request:
-        branches: [dev]
+        branches: [main]
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:dind
+        options: --privileged
 
     steps:
     - name: Checkout code
@@ -22,7 +33,35 @@ jobs:
         dotnet workload install aspire
 
     - name: Restore dependencies
-      run: /
-        dotnet restore
+      run: |
+        dotnet restore ${{ github.workspace }}/ProductWarehouse/ProductWarehouse.sln
 
-# TO BE COMPLETE IN SUBSEQUENT pull_request
+    - name: Build solution
+      run: |
+        dotnet build ${{ github.workspace }}/ProductWarehouse/ProductWarehouse.sln --no-restore --configuration Release
+
+    - name: Run tests
+      run: |
+        dotnet test ${{ github.workspace }}/ProductWarehouse/ProductWarehouse.sln --no-build --configuration Release --verbosity normal --logger trx --results-directory TestResults/
+      env:
+        # TestContainers needs access to Docker
+        DOCKER_HOST: tcp://localhost:2375
+        # Optional: Set TestContainers to use specific settings
+        TESTCONTAINERS_HOST_OVERRIDE: localhost
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: TestResults/
+        retention-days: 30
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Test Results
+        path: TestResults/*.trx
+        reporter: dotnet-trx
+        fail-on-error: true

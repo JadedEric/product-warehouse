@@ -27,7 +27,17 @@
 - [x] Problem detail extensions
 
 ## Infrastructure
-- [ ] Add dependency injection file
+- [x] Add dependency injection file
+- [x] Add Entity Framework Core
+- [x] Add Dapper
+- [x] Add NPGSQL package for dealing with PostgreSQL
+- [x] Configure the product repository
+- [x] Configure a Dapper database factory implementation
+- [x] Set up DBContext
+- [x] Expose a static factory builder method in the Product value object
+- [x] Build select
+- [x] Build insert
+- [x] Build select by
 
 ## Application
 - [ ] Add dependency injection file
