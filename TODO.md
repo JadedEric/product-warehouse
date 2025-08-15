@@ -40,22 +40,35 @@
 - [x] Build select by
 
 ## Application
-- [ ] Add dependency injection file
+- [x] Add dependency injection file
+- [x] Bring in infrastructure dependency
+- [x] Add product service contract
+- [x] Add data transfer objects
+- [x] Add product service
+- [x] Fix spelling mistake on IProductRepository
+- [x] Update readme.md
 
 ## Presentation
 - [ ] Add dependency injection file
+
+## WebAPI
+- [ ] Add a web api project
+- [ ] Expose all end-points from the presentation layer
+- [ ] Swagger-type documentation
 
 ## UI
 - [ ]
 
 ## Integration Tests
-- [ ]
+- [x] Develop a set of integration tests for the infrastructure layer
 
 ## Aspire Configuration
 - [ ]
 
 ## Documentation
-- [ ]
+- [x] Update README.md
 
 ## Issues and Blockers
-- [ ]
+- [ ] Not going to get to the UI layer
+- [ ] Added a WebAPI service for now
+- [ ] No unit tests for any of the other layers

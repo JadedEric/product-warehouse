@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProductWarehouse.Infrastructure.Repository;
 
-public class ProductRepository(IDbConnectionFactory connectionFactory) : IProductRespository
+public class ProductRepository(IDbConnectionFactory connectionFactory) : IProductRepository
 {
     private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProductWarehouse.Core.Interfaces;
 
-public interface IProductRespository
+public interface IProductRepository
 {
     Task<Result<Product>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     
