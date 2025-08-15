@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProductWarehouse.Api\ProductWarehouse.Api.csproj" />
     <ProjectReference Include="..\ProductWarehouse.UI\ProductWarehouse.UI.csproj" />
   </ItemGroup>
 
