@@ -48,7 +48,7 @@ public class ProductRepositoryTests: DatabaseTestBase
 
         // Assert
         result.IsFailure.Should().BeTrue();
-        result.Error.Code.Should().Be("Product.NotFound");
+        result.Error.Code.Should().Be("NotFound.Product");
     }
 
     [Fact]
