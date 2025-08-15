@@ -26,27 +26,17 @@ jobs:
       run: |
         dotnet workload install aspire
 
-    - name: Debug - List files
-      run: |
-        echo "Current working directory:"
-        pwd
-        echo "GitHub workspace: ${{ github.workspace }}"
-        echo "Files in current directory:"
-        ls -la
-        echo "Looking for .sln files:"
-        find . -name "*.sln" -type f
-
     - name: Restore dependencies
       run: |
-        dotnet restore ProductWarehouse.sln
+        dotnet restore ${{ github.workspace }}/ProductWarehouse/ProductWarehouse.sln
 
     - name: Build solution
       run: |
-        dotnet build ProductWarehouse.sln --no-restore --configuration Release
+        dotnet build ${{ github.workspace }}/ProductWarehouse/ProductWarehouse.sln --no-restore --configuration Release
 
     - name: Run tests
       run: |
-        dotnet test ProductWarehouse.sln --no-build --configuration Release --verbosity normal --logger trx --results-directory TestResults/
+        dotnet test ${{ github.workspace }}/ProductWarehouse/ProductWarehouse.sln --no-build --configuration Release --verbosity normal --logger trx --results-directory TestResults/
       env:
         # TestContainers needs access to Docker
         DOCKER_HOST: tcp://localhost:2375
