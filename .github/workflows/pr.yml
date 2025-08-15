@@ -27,7 +27,7 @@ jobs:
         dotnet workload install aspire
 
     - name: Restore dependencies
-      run: /
+      run: |
         dotnet restore
 
     - name: Build solution
