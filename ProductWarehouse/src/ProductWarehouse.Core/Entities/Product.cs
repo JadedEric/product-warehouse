@@ -62,4 +62,12 @@ public class Product
 
         return Result.Success();
     }
+
+    public static Product FromRepository(Guid id, string name, string description, decimal price, DateTime createdAt, DateTime? updatedAt)
+    {
+        return new Product(id, name, description, price, createdAt)
+        {
+            UpdatedAt = updatedAt
+        };
+    }
 }

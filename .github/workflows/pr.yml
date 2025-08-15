@@ -2,11 +2,16 @@ name: PR Pipeline
 
 on:
     pull_request:
-        branches: [dev]
+        branches: [main]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:dind
+        options: --privileged
 
     steps:
     - name: Checkout code
@@ -25,4 +30,30 @@ jobs:
       run: /
         dotnet restore
 
-# TO BE COMPLETE IN SUBSEQUENT pull_request
+    - name: Build solution
+      run: |
+        dotnet build --no-restore --configuration Release
+
+    - name: Run tests
+      run: |
+        dotnet test --no-build --configuration Release --verbosity normal --logger trx --results-directory TestResults/
+      env:
+        DOCKER_HOST: tcp://localhost:2375
+        TESTCONTAINERS_HOST_OVERRIDE: localhost
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: TestResults/
+        retention-days: 30
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Test Results
+        path: TestResults/*.trx
+        reporter: dotnet-trx
+        fail-on-error: true
