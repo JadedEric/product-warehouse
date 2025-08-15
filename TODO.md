@@ -58,9 +58,10 @@
 - [x] Add DELETE /products/{id}
 
 ## WebAPI
-- [ ] Add a web api project
-- [ ] Expose all end-points from the presentation layer
-- [ ] Swagger-type documentation
+- [x] Add a web api project
+- [x] Expose all end-points from the presentation layer
+- [x] Swagger-type documentation
+- [x] Create a contract for the DbProvider so we can import Aspire DB
 
 ## UI
 - [ ]

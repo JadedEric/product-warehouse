@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ProductWarehouse.Core.Interfaces;
 using ProductWarehouse.Infrastructure.Abstractions;
 using ProductWarehouse.Infrastructure.Context;
+using ProductWarehouse.Infrastructure.Interfaces;
 using ProductWarehouse.Infrastructure.Repository;
 
 namespace ProductWarehouse.Infrastructure;
@@ -17,6 +18,9 @@ public static class DependencyInjection
     {
         services.AddDbContext<ProductDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+        services.AddScoped<IApplicationDbContext>(provider =>
+            provider.GetRequiredService<ProductDbContext>());
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
         services.AddScoped<IProductRepository, ProductRepository>();
