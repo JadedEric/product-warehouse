@@ -49,13 +49,13 @@
 - [x] Update readme.md
 
 ## Presentation
-- [ ] Add dependency injection file
-- [ ] Add FastApiEndpoints
-- [ ] Add GET /products
-- [ ] Add GET /products/{id}
-- [ ] Add POST /products
-- [ ] Add PUT /products/{id}
-- [ ] Add DELETE /products/{id}
+- [x] Add dependency injection file
+- [x] Add FastApiEndpoints
+- [x] Add GET /products
+- [x] Add GET /products/{id}
+- [x] Add POST /products
+- [x] Add PUT /products/{id}
+- [x] Add DELETE /products/{id}
 
 ## WebAPI
 - [ ] Add a web api project
